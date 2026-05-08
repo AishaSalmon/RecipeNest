@@ -1,0 +1,74 @@
+/* // This is the global CSS file for the application. Styles in the default root element are inherited by all elements.
+// The CSS variables defined in this file like the body.light and body.dark classes are used to implement the light and dark themes across the app. The transition properties ensure smooth theme switching. */
+
+:root { 
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light;
+  color: #1a1a1a;
+  background-color: #f7f4ea;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: auto;
+}
+
+p{
+  font-family:  system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; 
+  font-size: 20px;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: var(--charcoal);
+  background: var(--background);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a:visited { color: inherit; }
+a:active { opacity: 0.5; }
+a:focus { outline: none; }
+
+/* //To toggle between light and dark modes, we define CSS variables for both themes.
+The body element will have either the light or dark class applied based on the user's preference, which will switch the color scheme accordingly. */
+
+body.light {
+  --background: #f7f4ea;
+  --card: #ffffff;
+  --text: #1a1a1a;
+  --muted: #666;
+  --primary: #35563a;
+}
+
+body.dark {
+  --background: #121212;
+  --card: #1f1f1f;
+  --text: #f1f1f1;
+  --muted: #b0b0b0;
+  --primary: #6ba573;
+}
+
+body{
+  background: var(--background);
+  color: var(--text);
+  transition: background 0.25s ease, color 0.25s ease;
+}

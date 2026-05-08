@@ -1,0 +1,48 @@
+# =====================================
+# REACT FRONTEND
+# =====================================
+
+RecipeNestFrontend/node_modules/
+RecipeNestFrontend/dist/
+RecipeNestFrontend/build/
+
+RecipeNestFrontend/.env
+RecipeNestFrontend/.env.local
+RecipeNestFrontend/.env.development.local
+RecipeNestFrontend/.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =====================================
+# ASP.NET CORE BACKEND
+# =====================================
+
+RecipeNestBackend/RecipeNest/bin/
+RecipeNestBackend/RecipeNest/obj/
+RecipeNestBackend/RecipeNest/.vs/
+RecipeNestBackend/RecipeNest/wwwroot/images/
+
+bin/
+obj/
+.vs/
+
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+RecipeNestBackend/RecipeNest/appsettings.Development.json
+
+# Logs
+*.log
+logs/
+
+# Rider / VSCode
+.idea/
+.vscode/
+
+# OS Files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,806 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* The home.css page manages the entire styling of the Home page and its subcomponents. 
+   It defines a cohesive color palette using CSS variables, which allows for easy theming and maintenance. 
+   The layout is structured using CSS Grid, with a left panel for navigation and a right panel for content display. 
+   The styles include responsive design adjustments to ensure the page looks good on various screen sizes, 
+   as well as interactive elements like hover effects on buttons and cards to enhance user experience. 
+   the css of each page also ensures consistency and maitainability. It eliminates repitition of code.
+   IN addition, it supports theming and easy customization through the use of CSS variables.
+   It also ensures that the application is responsive and adapts well to different screen sizes. */
+
+:root {
+  --olive: #3A5A40;
+  --olive-light: #588157;
+  --terracotta: #C46A4A;
+  --cream: #FAF3E0;
+  --charcoal: #2B2B2B;
+  --muted: #6B6B6B;
+  --border: #E7E2D9;
+  --white: #FFFFFF;
+  --background: #f9faf5;
+  --shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
+  --shadow-strong: 0 8px 24px rgba(58, 90, 64, 0.16);
+  --radius: 18px;
+}
+
+body.light {
+  --olive: #3A5A40;
+  --olive-light: #588157;
+  --terracotta: #C46A4A;
+  --cream: #FAF3E0;
+  --charcoal: #2B2B2B;
+  --muted: #6B6B6B;
+  --border: #E7E2D9;
+  --white: #FFFFFF;
+  --background: #f9faf5;
+  --shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
+  --shadow-strong: 0 8px 24px rgba(58, 90, 64, 0.16);
+}
+
+body.dark {
+  --olive: #6ba573;
+  --olive-light: #4f8e66;
+  --terracotta: #d08a66;
+  --cream: #1f2a24;
+  --charcoal: #e8f0ea;
+  --muted: #b7c4bb;
+  --border: #32433a;
+  --white: #17201b;
+  --background: #101714;
+  --shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+  --shadow-strong: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.Home {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  overflow-x: hidden;
+  background: linear-gradient(135deg, #f9faf5 0%, var(--cream) 100%);
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.left_panel {
+  grid-row: 1 / span 2;
+  background: linear-gradient(180deg, var(--olive), #3f6b52);
+  color: var(--white);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  min-height: 100vh;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  align-self: start;
+  font-size: 18px;
+  box-shadow: 8px 0 24px rgba(58, 90, 64, 0.12);
+  overflow-y: auto;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.logo h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.left_panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.left_panel a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.left_panel li {
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.left_panel li:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateX(4px);
+}
+
+.right_panel {
+  grid-column: 2;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 0;
+}
+
+.topPanel {
+  background: transparent;
+  padding: 16px 24px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+}
+
+.top_heading,
+.top_heading2 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--olive), var(--olive-light));
+  color: var(--white);
+  box-shadow: var(--shadow-strong);
+}
+
+.top_heading {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.top_heading2 {
+  justify-content: flex-start;
+  gap: 0.75rem;
+}
+
+.about-content {
+  width: 100%;
+  max-width: 980px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 16px 40px;
+}
+
+.content,
+.dashboard-content,
+.dashboard {
+  width: min(920px, calc(100% - 24px));
+  padding: 28px 30px;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.content,
+.dashboard-content {
+  max-height: calc(100vh - 220px);
+  overflow-y: auto;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1.75;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.content h1 {
+  margin: 20px 0 10px;
+  color: var(--olive);
+  font-size: 24px;
+}
+
+.content p {
+  margin: 0 0 12px;
+}
+
+.content ul {
+  margin: 10px 0 14px 22px;
+}
+
+.content li {
+  margin-bottom: 8px;
+  margin-left: 16px;
+  font-size: 16px;
+}
+
+.about-content button,
+.post-discussion-button,
+.dashboard-buttons button,
+.actions button, 
+.sign-out-actions button,
+.manageRecipe_container button,
+.chef-profile button {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: var(--olive);
+  color: var(--white);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.about-content button:hover,
+.post-discussion-button:hover,
+.dashboard-buttons button:hover,
+.actions button:hover,
+.sign-out-actions button:hover,
+.manageRecipe_container button:hover {
+  background: var(--olive-light);
+  transform: translateY(-1px);
+}
+
+.createDiscussionForm,
+.generalQuestions {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.question {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--charcoal);
+  font-weight: 600;
+}
+
+.question input,
+.question textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--charcoal);
+  font: inherit;
+}
+
+.question textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.question input[type="file"] {
+  padding: 10px;
+}
+
+.question input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  accent-color: var(--olive);
+}
+
+.options {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.options button {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: transparent;
+  color: var(--white);
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.options button:hover {
+  background: rgba(255, 255, 255, 0.14);
+  transform: translateY(-1px);
+}
+
+.options button.active {
+  background: var(--white);
+  color: var(--olive);
+  border-color: var(--white);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.top_badge {
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.14);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.pageContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  overflow: visible;
+  min-height: calc(100vh - 100px);
+  padding: 12px 12px 24px;
+}
+
+.card,
+.cardd,
+.discussion-card {
+  width: min(920px, 100%);
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 22px;
+  margin: 18px auto;
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cardd {
+  min-height: 210px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 170px;
+  gap: 24px;
+  align-items: center;
+}
+
+.discussion-card {
+  background: #f5efdd;
+}
+
+.card:hover,
+.cardd:hover,
+.discussion-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+.recipe-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.recipe-image {
+  width: 160px;
+  height: 140px;
+  object-fit: cover;
+  justify-self: end;
+  border-radius: 12px;
+  border: 2px solid rgba(58, 90, 64, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.recipe-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card img,
+.cardd img,
+.discussion-card img {
+  object-fit: cover;
+}
+
+.profile-avatar {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  border: 2px solid rgba(88, 129, 87, 0.25);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2px;
+  min-width: 0;
+}
+
+.profile h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--charcoal);
+}
+
+.profile p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.recipeHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(231, 226, 217, 0.9);
+}
+
+.card h3,
+.cardd h3,
+.discussion-card h3 {
+  margin: 14px 0 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--charcoal);
+}
+
+.card p,
+.cardd p,
+.discussion-card p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.truncate {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.view-recipe {
+  width: min(920px, 100%);
+  margin: 18px auto;
+}
+
+.view-recipe__card {
+  margin: 0;
+}
+
+.view-recipe__image-box {
+  width: 300px;
+  display: flex;
+  height: 300px;
+  margin-bottom: 20px;
+}
+
+.view-recipe__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 2px solid rgba(58, 90, 64, 0.18);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.view-recipe h2 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  color: var(--olive);
+}
+
+.view-recipe__ingredients {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.view-recipe__ingredients li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--cream);
+  color: var(--charcoal);
+}
+
+.view-recipe__instructions {
+  margin: 0;
+  line-height: 1.8;
+  color: var(--muted);
+  white-space: pre-line;
+}
+
+.discussion-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.chef-info {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.discussion-user h4 {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 800;
+  color: #111;
+}
+
+.discussion-user p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #777;
+}
+
+.discussion-heading {
+  font-size: 25px;
+  color: #35563a;
+  font-weight: 800;
+}
+
+.discussion-box {
+  background: white;
+  border-radius: 15px;
+  padding: 17px;
+  margin-bottom: 20px;
+}
+
+.discussion-box.large {
+  min-height: 168px;
+}
+
+.discussion-box h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.discussion-box p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.chef-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--white);
+}
+
+.chef-profile img {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.chef-profile h2,
+.chef-profile h6 {
+  margin: 0;
+  color: var(--charcoal);
+}
+
+.dashboard-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.dashboard-buttons button {
+  flex: 1 1 180px;
+}
+
+/*Manages the responsive design of the Home page, ensuring that the homepage adapts to different screen sizes. 
+   It adjusts the grid structure, padding, and element sizes to maintain usability on tablets and mobile devices. 
+   The media queries target specific breakpoints (1024px, 900px, and 640px) to optimize the user experience across a wide range of devices. */
+
+@media (max-width: 1024px) {
+  .Home {
+    grid-template-columns: 240px minmax(0, 1fr);
+  }
+
+  .left_panel {
+    padding: 24px 18px;
+  }
+
+  .card {
+    grid-template-columns: minmax(0, 1fr) 150px;
+  }
+}
+
+@media (max-width: 900px) {
+  .Home {
+    grid-template-columns: 1fr;
+    overflow: visible;
+  }
+
+  .left_panel {
+    grid-row: auto;
+    min-height: auto;
+    height: auto;
+    position: static;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 20px;
+    gap: 20px;
+    overflow: visible;
+  }
+
+  .left_panel ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .left_panel li {
+    margin-bottom: 0;
+  }
+
+  .right_panel {
+    grid-column: 1;
+  }
+
+  .topPanel {
+    padding: 12px 14px;
+  }
+
+  .pageContent,
+  .content,
+  .dashboard-content {
+    max-height: none;
+  }
+
+  .pageContent {
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .cardd {
+    grid-template-columns: 1fr;
+  }
+
+  .recipe-image {
+    width: 100%;
+    height: 200px;
+    justify-self: stretch;
+  }
+
+  .view-recipe {
+    min-width: 0;
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .logo {
+    justify-content: flex-start;
+  }
+
+  .logo h2 {
+    font-size: 24px;
+  }
+
+  .top_heading,
+  .top_heading2,
+  .content,
+  .dashboard-content,
+  .dashboard,
+  .card,
+  .discussion-card {
+    padding: 18px 16px;
+    border-radius: 14px;
+  }
+
+  .options,
+  .actions,
+  .dashboard-buttons {
+    width: 100%;
+  }
+
+  .options button,
+  .actions button,
+  .dashboard-buttons button {
+    width: 100%;
+  }
+
+  .recipeHeader,
+  .discussion-top {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .actions {
+    margin-left: 0;
+  }
+
+  .discussion-user h4,
+  .discussion-heading,
+  .card h3,
+  .view-recipe h2 {
+    font-size: 22px;
+  }
+
+  .view-recipe__ingredients li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.manage-recipes-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+.manageRecipe_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  margin: 12px 0;
+  width: 60%;
+  background: var(--white);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  align-items: center;
+}
+.manageRecipe_left {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  flex: 1;
+}
+.manageRecipe_container:hover {
+  transform: translateY(-2px);
+  transition: all 0.2s ease;
+  transform: translateX(2px);
+  box-shadow: var(--shadow-strong);
+}
